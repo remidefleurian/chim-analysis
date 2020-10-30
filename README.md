@@ -1,6 +1,6 @@
 # ChiM analysis
 
-[![doi](https://zenodo.org/badge/DOI/10.5281/TODO.svg)](https://doi.org/10.5281/TODO)
+[![doi](https://zenodo.org/badge/DOI/10.5281/zenodo.4161610.svg)](https://doi.org/10.5281/zenodo.4161610)
 [![license](https://img.shields.io/github/license/remidefleurian/chim-analysis)](https://github.com/remidefleurian/chim-analysis/blob/master/LICENSE)
 
 This R script can be used to replicate the methods and results presented in the following article, and can be cited as such:
