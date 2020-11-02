@@ -5,7 +5,7 @@
 
 This R script can be used to replicate the methods and results presented in the following article, and can be cited as such:
 
-> de Fleurian, R., & Pearce, M. T. (2020). The relationship between valence and chills in music: A corpus analysis. *PsyArXiv*. doi: [10.31234/osf.io/TODO](https://doi.org/10.31234/osf.io/TODO)
+> de Fleurian, R., & Pearce, M. T. (2020). The relationship between valence and chills in music: A corpus analysis. *PsyArXiv*. doi: [10.31234/osf.io/v3rhe](https://doi.org/10.31234/osf.io/v3rhe)
 
 More specifically, since the data used in the article is proprietary and can therefore not be shared, this script is designed to download all the data required to replicate every step of the analysis presented in the article. Please note that data retrieved from the Spotify Web API changes slightly with time. As a consequence, a replication of the analysis might lead to slightly different results than those reported in the article.
 
