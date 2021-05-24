@@ -62,8 +62,8 @@ remove_outliers <- function(.df, .n_std = 3, .analysis_id) {
     labs(x = "Euclidian distance", y = "Count", fill = "Outlier")
     
     ggsave(paste0(
-      "output/plots/diagnostics/eucl-outliers/", 
-      .analysis_id, 
+      "output/plots/diagnostics/eucl-outliers/",
+      .analysis_id,
       "-outliers.png"
     ), p)
   
@@ -262,8 +262,8 @@ pca_features <- function(.df, .analysis_id) {
     theme_minimal()
   
   ggsave(paste0(
-    "output/plots/diagnostics/scree/", 
-    .analysis_id, 
+    "output/plots/diagnostics/scree/",
+    .analysis_id,
     "-scree.png"
   ), p)
   
@@ -272,7 +272,7 @@ pca_features <- function(.df, .analysis_id) {
     p <- .df %>% 
       custom_biplot(.pca_obj = pca)
     
-    ggsave("output/plots/figure-2.jpg", p, dpi = 600, width = 9.7, height = 6.5) 
+    ggsave("output/plots/figure-2.jpg", p, dpi = 600, width = 9.7, height = 6.5)
   }
   
   row <- tibble(
@@ -658,8 +658,8 @@ collinearity_plot <- function(.df, .analysis_id) {
   )
   
   ggsave(paste0(
-    "output/plots/diagnostics/collinearity/", 
-    .analysis_id, 
+    "output/plots/diagnostics/collinearity/",
+    .analysis_id,
     "-collinearity.png"
   ), p)
   
@@ -758,11 +758,24 @@ matching_plot <- function(.df) {
           axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)),
           panel.grid.major.y = element_blank(),
           panel.grid.minor.y = element_blank()) +
-    labs(title = "B", x = "", y = "Density", fill = "Track", colour = "Track")
+    labs(title = "B", x = "", y = "Density", fill = "Track", colour = "Track") +
+    theme(legend.position = "none")
   
-  p <- p1 + p2
+  # Valence
+  p3 <- .df %>% 
+    mutate(type = ifelse(type == "chills", "Chills", "Match")) %>% 
+    ggplot(aes(type, valence, fill = type)) +
+    geom_boxplot(alpha = 0.4, show.legend = FALSE) +
+    geom_point(alpha = 0, shape = 22) + # Dummy layer for legend purposes only
+    geom_line(aes(group = match_id), alpha = 0.1) +
+    theme_minimal() +
+    scale_fill_manual(values = c("#d55e00", "#9ad0f3")) +
+    labs(title = "C", x = "", y = "Valence", fill = "Track")  +
+    guides(fill = guide_legend(override.aes = list(size = 5, alpha = 0.4)))
   
-  ggsave("output/plots/figure-1.jpg", p, dpi = 600, width = 8, height = 5) 
+  p <- p1 + p2 + p3
+  
+  ggsave("output/plots/figure-1.jpg", p, dpi = 600, width = 12, height = 5)
 }
 ## Plots for PCA loadings over analysis iterations -----------------------------
 pca_loadings_plots <- function(.df) {

@@ -235,13 +235,11 @@ search_top_artist <- function(.item) {
 assign_ids <- function(.df, .type) {
   if(.type == "chills") {
     .df <- .df %>% 
-      mutate(analysis_id = "all")
+      mutate(analysis_id = "all") %>% 
+      mutate(match_id = paste0("m", row_number()))
   }
   
   .df %>% 
     mutate(type = .type) %>% 
-    group_by(analysis_id) %>% 
-    mutate(match_id = paste0("m", row_number())) %>% 
-    ungroup() %>% 
     select(artist:track_id, analysis_id, match_id, type, duration_ms:last_col())
 }

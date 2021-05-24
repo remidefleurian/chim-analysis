@@ -53,6 +53,7 @@ select_match <- function(.row, .from, .iter) {
       title = rep(NA_character_, .iter),
       track_id = rep(NA_character_, .iter),
       analysis_id = rep(NA, .iter),
+      match_id = rep(NA_character_, .iter),
       duration_ms = rep(NA, .iter), 
       popularity = rep(NA, .iter),
       released = rep(as.Date(NA), .iter),
@@ -69,7 +70,10 @@ select_match <- function(.row, .from, .iter) {
         (duration_ms_std - as.numeric(select(.row, duration_ms_std)))^2 + 
           (popularity_std - as.numeric(select(.row, popularity_std)))^2)) %>% 
       arrange(eucl_dist) %>%
-      mutate(analysis_id = paste0("a", row_number())) %>% 
+      mutate(
+        analysis_id = paste0("a", row_number()),
+        match_id = .row$match_id
+        ) %>% 
       select(artist:track_id, analysis_id, duration_ms:n_tracks, eucl_dist) %>% 
       head(.iter) %>%
       bind_rows(tibble(
