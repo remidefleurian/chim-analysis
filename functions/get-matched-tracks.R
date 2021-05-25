@@ -74,7 +74,10 @@ select_match <- function(.row, .from, .iter) {
         analysis_id = paste0("a", row_number()),
         match_id = .row$match_id
         ) %>% 
-      select(artist:track_id, analysis_id, duration_ms:n_tracks, eucl_dist) %>% 
+      select(
+        artist:track_id, analysis_id, match_id, 
+        duration_ms:n_tracks, eucl_dist
+        ) %>% 
       head(.iter) %>%
       bind_rows(tibble(
         artist = rep(pull(select(.row, artist)), .iter - nrow(.)),
