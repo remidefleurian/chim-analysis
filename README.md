@@ -5,7 +5,7 @@
 
 This R script can be used to replicate the methods and results presented in the following article, and can be cited as such:
 
-> de Fleurian, R., & Pearce, M. T. (2021). The relationship between valence and chills in music: A corpus analysis. *i-Perception, 12*(3), 1–11. doi: [10.1177/20416695211024680](https://doi.org/10.1177/20416695211024680)
+> de Fleurian, R., & Pearce, M. T. (2021). The relationship between valence and chills in music: A corpus analysis. *i-Perception, 12*(4), 1–11. doi: [10.1177/20416695211024680](https://doi.org/10.1177/20416695211024680)
 
 More specifically, since the data used in the article is proprietary and can therefore not be shared, this script is designed to download all the data required to replicate every step of the analysis presented in the article. Please note that data retrieved from the Spotify Web API changes slightly with time. As a consequence, a replication of the analysis might lead to slightly different results than those reported in the article.
 
